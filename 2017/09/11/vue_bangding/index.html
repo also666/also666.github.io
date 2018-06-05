@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>胡傲松的博客</title>
+  <title>原生JS模拟Vue双向数据绑定 | 胡傲松的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="胡傲松的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="童鞋们都应该知道Vue2.x很重要的特性（数据双向绑定、虚拟DOM），所以在面试的时候就经常有面试官问小白同学说数据双向绑定原理是什么，虚拟DOM是什么，给我实现一个呗。所以给大家展示一个最简的双向绑定的案例，也参考了网上一些资料。至于虚拟DOM的实现后面再说吧，网上资料也很多很全因为毕竟react都出来好久了。（都知道网上资料一大堆，大都不着调。）直接上代码！！！  index.html123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生JS模拟Vue双向数据绑定">
+<meta property="og:url" content="http://yoursite.com/2017/09/11/vue_bangding/index.html">
 <meta property="og:site_name" content="胡傲松的博客">
+<meta property="og:description" content="童鞋们都应该知道Vue2.x很重要的特性（数据双向绑定、虚拟DOM），所以在面试的时候就经常有面试官问小白同学说数据双向绑定原理是什么，虚拟DOM是什么，给我实现一个呗。所以给大家展示一个最简的双向绑定的案例，也参考了网上一些资料。至于虚拟DOM的实现后面再说吧，网上资料也很多很全因为毕竟react都出来好久了。（都知道网上资料一大堆，大都不着调。）直接上代码！！！  index.html123">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5877364-78fb46d67049feb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-11T13:02:34.878Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="胡傲松的博客">
+<meta name="twitter:title" content="原生JS模拟Vue双向数据绑定">
+<meta name="twitter:description" content="童鞋们都应该知道Vue2.x很重要的特性（数据双向绑定、虚拟DOM），所以在面试的时候就经常有面试官问小白同学说数据双向绑定原理是什么，虚拟DOM是什么，给我实现一个呗。所以给大家展示一个最简的双向绑定的案例，也参考了网上一些资料。至于虚拟DOM的实现后面再说吧，网上资料也很多很全因为毕竟react都出来好久了。（都知道网上资料一大堆，大都不着调。）直接上代码！！！  index.html123">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5877364-78fb46d67049feb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="胡傲松的博客" type="application/atom+xml">
   
@@ -150,31 +156,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-ten" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-vue_bangding" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/15/ten/">ten</a>
+    <h1 class="article-title" itemprop="name">
+      原生JS模拟Vue双向数据绑定
     </h1>
   
 
         
-        <a href="/2018/05/15/ten/" class="archive-article-date">
-  	<time datetime="2018-05-15T13:58:37.076Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
+        <a href="/2017/09/11/vue_bangding/" class="archive-article-date">
+  	<time datetime="2017-09-11T12:59:51.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p> 童鞋们都应该知道Vue2.x很重要的特性（数据双向绑定、虚拟DOM），所以在面试的时候就经常有面试官问小白同学说数据双向绑定原理是什么，虚拟DOM是什么，给我实现一个呗。所以给大家展示一个最简的双向绑定的案例，也参考了网上一些资料。至于虚拟DOM的实现后面再说吧，网上资料也很多很全因为毕竟react都出来好久了。（都知道网上资料一大堆，大都不着调。）直接上代码！！！</p>
+<ul>
+<li>index.html<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"mvvm/watcher.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"mvvm/observer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"mvvm/compile.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"mvvm/index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">		let vm = new Vue(&#123;</span></span><br><span class="line"><span class="undefined">			el: "app",</span></span><br><span class="line"><span class="undefined">			data: &#123;</span></span><br><span class="line"><span class="undefined">				msg: 'hello world'</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;)</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个文件为入口文件，也就是Vue的构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 传递过来的对象</span></span><br><span class="line">	<span class="keyword">this</span>.data = options.data;</span><br><span class="line">	<span class="keyword">this</span>.id = options.el;</span><br><span class="line">	<span class="comment">// 1.第一步先将data中所有的数据进行监听</span></span><br><span class="line">	<span class="comment">//   这个函数一般使用递归的方式完成所有属性的监听</span></span><br><span class="line">	observer(<span class="keyword">this</span>.data, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2.第二步将所有DOM节点的翻译出来，也就是说将v-model，</span></span><br><span class="line">	<span class="comment">//  &#123;&#123;&#125;&#125;等翻译成你想要的数据。其次还有将v-model的数据进行监听，使用观察者模式，完成双向绑定</span></span><br><span class="line">	getAllNode(<span class="built_in">document</span>.getElementById(<span class="keyword">this</span>.id), <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>observer.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个pubsub,这个作用是将所有的观察者加入其中，</span></span><br><span class="line"><span class="comment">// 并且出发事件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pubsub</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.subs = [];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pubsub.prototype = &#123;</span><br><span class="line">	<span class="comment">// 将需要观察的数据加入subs中</span></span><br><span class="line">	addSub: <span class="function"><span class="keyword">function</span>(<span class="params">sub</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.subs.push(sub);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 执行观察的数据上绑定的事件update事件。</span></span><br><span class="line">    pub: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="keyword">this</span>.subs);</span><br><span class="line">        <span class="keyword">this</span>.subs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">sub</span>)</span>&#123;</span><br><span class="line">            sub.update();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将数据都进行监听</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">active</span>(<span class="params">obj, key, val</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> pubsub1 = <span class="keyword">new</span> pubsub();</span><br><span class="line">	<span class="built_in">Object</span>.defineProperty(obj.data, key, &#123;</span><br><span class="line">		<span class="comment">// getter，如果获取数据时，会判断是有需要观察的数据，如果有就添加到subs中，没有不添加</span></span><br><span class="line">		<span class="comment">// Pubsub是一个全局的变量，这个变量必须是全局才能判断是有需要观察的数据</span></span><br><span class="line">		get() &#123;</span><br><span class="line">			<span class="keyword">if</span>(Pubsub.target) &#123;</span><br><span class="line">				<span class="comment">// 添加订阅</span></span><br><span class="line">				pubsub1.addSub(Pubsub.target);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> val;</span><br><span class="line">		&#125;,</span><br><span class="line">		set(newVal) &#123;</span><br><span class="line">			<span class="comment">// 如果数据被setter，那么就涉及到及时的更新数据，</span></span><br><span class="line">			<span class="comment">// 这时只需要进行发布事件，观察的数据就会执行update函数来执行更新操作</span></span><br><span class="line">			<span class="keyword">if</span>(val == newVal) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			val = newVal;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 发布</span></span><br><span class="line">			pubsub1.pub();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听data中所有的数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">observer</span>(<span class="params">obj, vm</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// obj = data</span></span><br><span class="line">	<span class="comment">// vm  = 实例对象</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">		active(vm, key, obj[key]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>comiple.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取到所有节点，并且进行翻译</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAllNode</span>(<span class="params">node, vm</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(vm);</span><br><span class="line">	<span class="keyword">var</span> length = node.childNodes.length;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">		compile(node.childNodes[i], vm)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 翻译</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">node, vm</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 匹配到&#123;&#123;&#125;&#125;,将其中的值进行观察。</span></span><br><span class="line">	<span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;(.*)\&#125;\&#125;/</span>;</span><br><span class="line">	<span class="comment">// 如果节点存在并且节点类型为1时（查看一下为1时一般都是什么节点）</span></span><br><span class="line">	<span class="keyword">if</span>(node!=<span class="literal">undefined</span> &amp;&amp; node.nodeType == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="comment">// 获取到节点的属性</span></span><br><span class="line">		<span class="keyword">var</span> attr = node.attributes;</span><br><span class="line">		<span class="keyword">if</span>(attr.length) &#123;</span><br><span class="line">			<span class="comment">// 对节点的属性循环处理</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; attr.length; i++) &#123;</span><br><span class="line">				<span class="comment">// 如果为v-model时，进行处理</span></span><br><span class="line">				<span class="keyword">if</span>(attr[i].nodeName == <span class="string">"v-model"</span>) &#123;</span><br><span class="line">					<span class="comment">// 获取到v-model里面的写的变量名</span></span><br><span class="line">					<span class="keyword">var</span> name = attr[i].nodeValue;</span><br><span class="line">					<span class="comment">// 给该input增加事件处理，如果内容改变，并及时更新data中的数据</span></span><br><span class="line">					node.addEventListener(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">						vm.data[name] = e.target.value;</span><br><span class="line">					&#125;)</span><br><span class="line"></span><br><span class="line">					<span class="comment">// 修改dom上的数据，并移除指令</span></span><br><span class="line">					<span class="built_in">console</span>.log(vm.data[name]);</span><br><span class="line">					node.value = vm.data[name];</span><br><span class="line">					node.removeAttribute(<span class="string">'v-model'</span>)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 匹配到&#123;&#123;&#125;&#125;的dom节点</span></span><br><span class="line">			<span class="keyword">if</span>(reg.test(node.outerText)) &#123;</span><br><span class="line">				<span class="keyword">var</span> name = <span class="built_in">RegExp</span>.$<span class="number">1</span>;</span><br><span class="line">				<span class="comment">// 拿到变量的名称</span></span><br><span class="line">				name = name.trim();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// 将变量加入到watcher中</span></span><br><span class="line">				<span class="keyword">new</span> Watcher(vm, node, name)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>watcher.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局的变量，这个变量来控制是否当前有观察的数据</span></span><br><span class="line"><span class="keyword">var</span> Pubsub = &#123;</span><br><span class="line">	target: <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 观察者定义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Watcher</span>(<span class="params">vm, node, name</span>) </span>&#123;</span><br><span class="line">	Pubsub.target = <span class="keyword">this</span>;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.node = node;</span><br><span class="line">	<span class="keyword">this</span>.vm = vm;</span><br><span class="line">	<span class="comment">// 将数据观察时就要进行更新操作一次</span></span><br><span class="line">	<span class="keyword">this</span>.update();</span><br><span class="line">	Pubsub.target = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Watcher.prototype = &#123;</span><br><span class="line">	<span class="comment">// 将更新的数据渲染到页面中去</span></span><br><span class="line">	update() &#123;</span><br><span class="line">		<span class="keyword">this</span>.node.innerHTML = <span class="keyword">this</span>.vm.data[<span class="keyword">this</span>.name];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>大家想测试，就将五个文件的代码复制下来，运行一下。<br>运行的同时给大家配一张图，让大家容易理解。（这张是盗图，不知哪位大神用visio画的，这里我就直接引用了）<br><img src="https://upload-images.jianshu.io/upload_images/5877364-78fb46d67049feb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原理图.png"></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -183,16 +229,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/15/ten/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/09/11/vue_bangding/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/09/29/vue_life/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Vue2.0基础-生命周期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/24/vue-base/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue2.0基础-简介</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -212,581 +326,14 @@
 
 
 
-
-  
-    <article id="post-nine" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/26/nine/">nine</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/26/nine/" class="archive-article-date">
-  	<time datetime="2018-04-26T13:58:07.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/26/nine/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-third" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/third/">Vue2.0基础-生命周期</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/10/third/" class="archive-article-date">
-  	<time datetime="2018-04-10T12:04:25.149Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/10/third/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/Git/">Git常用命令速查表</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/09/Git/" class="archive-article-date">
-  	<time datetime="2018-04-09T14:00:24.020Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><blockquote>
-<p>$ git clone <url>  　　　　　 <font color="#668899"> #克隆远程版本库 </font><br>$ git init   　　　　　　 <font color="#668899">#初始化本地版本库</font></url></p>
-</blockquote>
-<h3 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h3><blockquote>
-<p>$ git status　　　　　　　　　　　　　　　　<font color="#668899">#查看状态</font><br>$ git diff　　　　　　　　　　　　　　　　　 <font color="#668899">#查看变更内容</font><br>$ git add 　　　　　　　　　　　　　　 　　  <font color="#668899">#跟踪所有改动过的文件</font><br>$ git add <file>  　　　　　　　　　　　　　　　　　<font color="#668899">#跟踪指定的文件</font><br>$ git mv <old> <new>　　　　　　　　　　　　　　　　　 <font color="#668899">#文件改名</font><br>$ git rm <file> 　　　　　　　　　　　　　　　　　 <font color="#668899">#删除文件</font><br>$ git rm –cached <file> 　　　　　　　　　　　　　<font color="#668899">#停止跟踪文件但不删除</font><br>$ git commit -m “commit message” 　　　　<font color="#668899">#提交所有更新过的文件</font><br>$ git commit –amend  　　　　　　　　　　　<font color="#668899">#修改最后一次提交</font></file></file></new></old></file></p>
-</blockquote>
-<h3 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h3><blockquote>
-<p>$ git log 　　　　　　 <font color="#668899">#查看提交历史</font><br>$ git log -p <file> 　　　　　<font color="#668899">#查看指定文件的提交历史</font><br>$ git blame <file> 　　　　　<font color="#668899">#以列表方式查看指定文件的提交历史</font></file></file></p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/04/09/Git/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/09/Git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-eight" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/20/eight/">eight</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/20/eight/" class="archive-article-date">
-  	<time datetime="2018-03-20T13:56:28.063Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/20/eight/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sever" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/16/sever/">sever</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/16/sever/" class="archive-article-date">
-  	<time datetime="2018-02-16T13:56:06.481Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/16/sever/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-six" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/29/six/">six</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/29/six/" class="archive-article-date">
-  	<time datetime="2018-01-29T13:55:46.235Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/29/six/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-five" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/14/five/">five</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/14/five/" class="archive-article-date">
-  	<time datetime="2018-01-14T13:55:26.907Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/14/five/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-four" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/05/four/">four</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/05/four/" class="archive-article-date">
-  	<time datetime="2018-01-05T13:54:55.609Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/05/four/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-three" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/three/">three</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/21/three/" class="archive-article-date">
-  	<time datetime="2017-12-21T13:54:23.564Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/21/three/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -809,8 +356,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
