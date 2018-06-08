@@ -283,7 +283,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/third/">Vue2.0基础-生命周期</a>
+      <a class="article-title" href="/2018/04/10/third/">....</a>
     </h1>
   
 
@@ -721,19 +721,19 @@
 
 
   
-    <article id="post-three" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Memory" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/three/">three</a>
+      <a class="article-title" href="/2017/12/21/Memory/">JavaScript内存泄露</a>
     </h1>
   
 
         
-        <a href="/2017/12/21/three/" class="archive-article-date">
+        <a href="/2017/12/21/Memory/" class="archive-article-date">
   	<time datetime="2017-12-21T13:54:23.564Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-21</time>
 </a>
         
@@ -741,7 +741,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="什么是内存泄露？"><a href="#什么是内存泄露？" class="headerlink" title="什么是内存泄露？"></a>什么是内存泄露？</h3><p>程序的运行需要内存，只要程序提出要求，操作系统或运行时必须要提供内存，<br>尤其是持续运行的服务进程，必须要及时释放不需要的内存，否则内存所占的会越来越高，轻则影响性能，重则导致进程崩塌。<br>不再用到的内存没有及时释放，就叫做内存泄露。</p>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>一般语言中都会提供一种方法进行释放内存，比如垃圾回收机制，垃圾回收机制是通过“引用计数”来判断这个值是否还需要，<br>如果一个值的引用次数为0，那么意味它将不被需要，那么就可以把这块内存释放。<br>但是如果一个值不再被需要了，但它的引用次数不为0，则不能被释放，这就造成了内存泄露。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 4];</span><br><span class="line">console.log(&apos;hello world&apos;);</span><br></pre></td></tr></table></figure>
+<p>[1,2,3,4]就是一个值，即使后边没有调用arr，它的引用次数依然为1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">console.log(&apos;hello world&apos;);</span><br><span class="line">arr = null;</span><br></pre></td></tr></table></figure>
+<p>那么我们可以添加一句代码，arr=null;这样就解除了对[1,2,3,4]的引用，让他的引用次数为0，这样就可以被释放内存了。</p>
+<h3 id="内存泄漏的识别方法"><a href="#内存泄漏的识别方法" class="headerlink" title="内存泄漏的识别方法"></a>内存泄漏的识别方法</h3><p>如果连续五次进行垃圾回收之后，内存所占比一次比一次大，那么这样的情况下就会有内存泄露。这时我们要实时查看内存占用。</p>
+<h5 id="浏览器中："><a href="#浏览器中：" class="headerlink" title="浏览器中："></a>浏览器中：</h5><blockquote>
+<p>1、打开开发者工具，选择 Timeline 面板<br>  2、在顶部的Capture字段里面勾选 Memory<br>  3、点击左上角的录制按钮。<br>  4、在页面上进行各种操作，模拟用户的使用情况。<br>  5、一段时间后，点击对话框的 stop 按钮，面板上就会显示这段时间的内存占用情况。</p>
+</blockquote>
+<p>如果内存占用基本平稳，接近水平，这说明不存在内存泄露，反之，则说明有内存泄露。</p>
+<h5 id="命令行："><a href="#命令行：" class="headerlink" title="命令行："></a>命令行：</h5><p>命令行可以使用 Node 提供的process.memoryUsage方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(process.memoryUsage());</span><br><span class="line">// &#123; rss: 27709440,</span><br><span class="line">//  heapTotal: 5685248,</span><br><span class="line">//  heapUsed: 3449392,</span><br><span class="line">//  external: 8772 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>process.memoryUsage返回一个对象，包含了 Node 进程的内存占用信息。该对象包含四个字段，单位是字节，含义如下。</p>
+<blockquote>
+<p>rss（resident set size）：所有内存占用，包括指令区和堆栈。<br>  heapTotal：”堆”占用的内存，包括用到的和没用到的。<br>  heapUsed：用到的堆的部分。<br>  external： V8 引擎内部的 C++ 对象占用的内存。</p>
+</blockquote>
+<p>  判断内存泄漏，以heapUsed字段为准。</p>
+
       
 
       
@@ -753,7 +770,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/21/three/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/21/Memory/">展开全文 >></a>
         </p>
       
 

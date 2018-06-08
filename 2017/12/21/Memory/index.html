@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>事件流 | 胡傲松的博客</title>
+  <title>JavaScript内存泄露 | 胡傲松的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="事件捕获和事件冒泡事件流描述的是从页面中接收事件的顺序,也可理解为事件在页面中传播的顺序。事件流主要分为两种，即事件捕获和事件冒泡，这二者接受事件处理的顺序不同。假设下面的代码： 12345&amp;lt;body&amp;gt;    &amp;lt;div id=&amp;quot;outer&amp;quot;&amp;gt;        &amp;lt;div id=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;    &amp;">
+  <meta name="description" content="什么是内存泄露？程序的运行需要内存，只要程序提出要求，操作系统或运行时必须要提供内存，尤其是持续运行的服务进程，必须要及时释放不需要的内存，否则内存所占的会越来越高，轻则影响性能，重则导致进程崩塌。不再用到的内存没有及时释放，就叫做内存泄露。 垃圾回收机制一般语言中都会提供一种方法进行释放内存，比如垃圾回收机制，垃圾回收机制是通过“引用计数”来判断这个值是否还需要，如果一个值的引用次数为0，那么意">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事件流">
-<meta property="og:url" content="http://yoursite.com/2017/12/03/one/index.html">
+<meta property="og:title" content="JavaScript内存泄露">
+<meta property="og:url" content="http://yoursite.com/2017/12/21/Memory/index.html">
 <meta property="og:site_name" content="胡傲松的博客">
-<meta property="og:description" content="事件捕获和事件冒泡事件流描述的是从页面中接收事件的顺序,也可理解为事件在页面中传播的顺序。事件流主要分为两种，即事件捕获和事件冒泡，这二者接受事件处理的顺序不同。假设下面的代码： 12345&amp;lt;body&amp;gt;    &amp;lt;div id=&amp;quot;outer&amp;quot;&amp;gt;        &amp;lt;div id=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;    &amp;">
+<meta property="og:description" content="什么是内存泄露？程序的运行需要内存，只要程序提出要求，操作系统或运行时必须要提供内存，尤其是持续运行的服务进程，必须要及时释放不需要的内存，否则内存所占的会越来越高，轻则影响性能，重则导致进程崩塌。不再用到的内存没有及时释放，就叫做内存泄露。 垃圾回收机制一般语言中都会提供一种方法进行释放内存，比如垃圾回收机制，垃圾回收机制是通过“引用计数”来判断这个值是否还需要，如果一个值的引用次数为0，那么意">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-06T04:44:12.667Z">
+<meta property="og:updated_time" content="2018-06-08T15:21:46.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事件流">
-<meta name="twitter:description" content="事件捕获和事件冒泡事件流描述的是从页面中接收事件的顺序,也可理解为事件在页面中传播的顺序。事件流主要分为两种，即事件捕获和事件冒泡，这二者接受事件处理的顺序不同。假设下面的代码： 12345&amp;lt;body&amp;gt;    &amp;lt;div id=&amp;quot;outer&amp;quot;&amp;gt;        &amp;lt;div id=&amp;quot;inner&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;    &amp;">
+<meta name="twitter:title" content="JavaScript内存泄露">
+<meta name="twitter:description" content="什么是内存泄露？程序的运行需要内存，只要程序提出要求，操作系统或运行时必须要提供内存，尤其是持续运行的服务进程，必须要及时释放不需要的内存，否则内存所占的会越来越高，轻则影响性能，重则导致进程崩塌。不再用到的内存没有及时释放，就叫做内存泄露。 垃圾回收机制一般语言中都会提供一种方法进行释放内存，比如垃圾回收机制，垃圾回收机制是通过“引用计数”来判断这个值是否还需要，如果一个值的引用次数为0，那么意">
   
     <link rel="alternative" href="/atom.xml" title="胡傲松的博客" type="application/atom+xml">
   
@@ -154,33 +154,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-one" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Memory" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      事件流
+      JavaScript内存泄露
     </h1>
   
 
         
-        <a href="/2017/12/03/one/" class="archive-article-date">
-  	<time datetime="2017-12-03T13:52:21.432Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-03</time>
+        <a href="/2017/12/21/Memory/" class="archive-article-date">
+  	<time datetime="2017-12-21T13:54:23.564Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="事件捕获和事件冒泡"><a href="#事件捕获和事件冒泡" class="headerlink" title="事件捕获和事件冒泡"></a>事件捕获和事件冒泡</h3><p>事件流描述的是从页面中接收事件的顺序,也可理解为事件在页面中传播的顺序。<br>事件流主要分为两种，即事件捕获和事件冒泡，这二者接受事件处理的顺序不同。假设下面的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;outer&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;inner&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<p>这两个事件流分别的是IE公司和netspace公司提出来的，冒泡事件流支持的浏览器更多。<br>冒泡事件流中，事件的传递顺序是从子元素向父元素传递。假设我们给div绑定一个click事件。那么在冒泡事件流中，事件的传递顺序是：inner-&gt;outer-&gt;body。然而捕获事件流的顺序则截然想法：body-&gt;outer-&gt;innner。</p>
-<h4 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h4><p>DOM2级事件规定事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。还是以上面的代码为例，单击inner则会按照下面的顺序触发事件：document-&gt;html-&gt;body-&gt;outer-&gt;ineer-&gt;outer-&gt;body-&gt;html-&gt;document。在DOM事件流中，实际的目标inner在捕获阶段不会接受到事件。这意味着在捕获阶段，事件到outer就停止了，下一个阶段是“处于目标”阶段，于是事件在inner上发生，并在事件处理中呗看成是冒泡阶段的一部分。然后，冒泡阶段发生，事件又传播回文档。</p>
-<a id="more"></a>
-<h4 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h4><p>响应某个时间的函数叫做事件处理程序。DOM0级的事件处理程序很简单,onclick就是常用的DOM0级事件处理函数，只会在冒泡阶段被处理。<br>而DOM2级事件定义了两个方法用于处理置顶和删除事件处理程序的操作addEventListener()和removeEventListener()，所有DOM节点都包含这两个方法，并且它们都接受3个参数：要处理的事件名，作为事件处理的函数和一个布尔值。最后这个布尔值参数如果是true，表示在捕获阶段调用事件处理程序，反之则是在事件冒泡阶段处理程序。DOM2级方法添加事件处理程序的好处是可以添加多个事件处理程序，会按照添加顺序被处理（无论是捕获还是冒泡）。<br>而IE不同的它有自己的方法attachEvent()和detachEvent,这两个接受相同的两个参数：事件处理程序名称和事件处理程序函数。</p>
-<h4 id="跨浏览器的事件处理程序"><a href="#跨浏览器的事件处理程序" class="headerlink" title="跨浏览器的事件处理程序"></a>跨浏览器的事件处理程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var EventUtil = &#123;</span><br><span class="line">    addHandler: function(element,type,handler) &#123;</span><br><span class="line">        if(element.addEventListener) &#123;</span><br><span class="line">            element.addEventListener(type,handler,false);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(element.attachEvent) &#123;</span><br><span class="line">            element.attachEvent(&apos;on&apos;+type,handler);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            element[&apos;on&apos;+type]=handler;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    removeHandler: function(element,type,handler) &#123;</span><br><span class="line">        if(element.removeEventListener)&#123;</span><br><span class="line">            element.removeEventListener(type,handler,false);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(element.detachEvent) &#123;</span><br><span class="line">            element.detachEvent(&apos;on&apos;+type,handler);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            element[&apos;on&apos;+type] = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="什么是内存泄露？"><a href="#什么是内存泄露？" class="headerlink" title="什么是内存泄露？"></a>什么是内存泄露？</h3><p>程序的运行需要内存，只要程序提出要求，操作系统或运行时必须要提供内存，<br>尤其是持续运行的服务进程，必须要及时释放不需要的内存，否则内存所占的会越来越高，轻则影响性能，重则导致进程崩塌。<br>不再用到的内存没有及时释放，就叫做内存泄露。</p>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>一般语言中都会提供一种方法进行释放内存，比如垃圾回收机制，垃圾回收机制是通过“引用计数”来判断这个值是否还需要，<br>如果一个值的引用次数为0，那么意味它将不被需要，那么就可以把这块内存释放。<br>但是如果一个值不再被需要了，但它的引用次数不为0，则不能被释放，这就造成了内存泄露。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 4];</span><br><span class="line">console.log(&apos;hello world&apos;);</span><br></pre></td></tr></table></figure>
+<p>[1,2,3,4]就是一个值，即使后边没有调用arr，它的引用次数依然为1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">console.log(&apos;hello world&apos;);</span><br><span class="line">arr = null;</span><br></pre></td></tr></table></figure>
+<p>那么我们可以添加一句代码，arr=null;这样就解除了对[1,2,3,4]的引用，让他的引用次数为0，这样就可以被释放内存了。</p>
+<h3 id="内存泄漏的识别方法"><a href="#内存泄漏的识别方法" class="headerlink" title="内存泄漏的识别方法"></a>内存泄漏的识别方法</h3><p>如果连续五次进行垃圾回收之后，内存所占比一次比一次大，那么这样的情况下就会有内存泄露。这时我们要实时查看内存占用。</p>
+<h5 id="浏览器中："><a href="#浏览器中：" class="headerlink" title="浏览器中："></a>浏览器中：</h5><blockquote>
+<p>1、打开开发者工具，选择 Timeline 面板<br>  2、在顶部的Capture字段里面勾选 Memory<br>  3、点击左上角的录制按钮。<br>  4、在页面上进行各种操作，模拟用户的使用情况。<br>  5、一段时间后，点击对话框的 stop 按钮，面板上就会显示这段时间的内存占用情况。</p>
+</blockquote>
+<p>如果内存占用基本平稳，接近水平，这说明不存在内存泄露，反之，则说明有内存泄露。</p>
+<h5 id="命令行："><a href="#命令行：" class="headerlink" title="命令行："></a>命令行：</h5><p>命令行可以使用 Node 提供的process.memoryUsage方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(process.memoryUsage());</span><br><span class="line">// &#123; rss: 27709440,</span><br><span class="line">//  heapTotal: 5685248,</span><br><span class="line">//  heapUsed: 3449392,</span><br><span class="line">//  external: 8772 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>process.memoryUsage返回一个对象，包含了 Node 进程的内存占用信息。该对象包含四个字段，单位是字节，含义如下。</p>
+<blockquote>
+<p>rss（resident set size）：所有内存占用，包括指令区和堆栈。<br>  heapTotal：”堆”占用的内存，包括用到的和没用到的。<br>  heapUsed：用到的堆的部分。<br>  external： V8 引擎内部的 C++ 对象占用的内存。</p>
+</blockquote>
+<p>  判断内存泄漏，以heapUsed字段为准。</p>
 
       
 
@@ -260,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/03/one/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/21/Memory/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -274,18 +284,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/12/12/two/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/01/05/four/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          two
+          four
         
       </div>
     </a>
   
   
-    <a href="/2017/11/21/todoMVC/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">mvc</div>
+    <a href="/2017/12/12/HTTP_code/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTTP状态码详解</div>
       <i class="icon-circle-right"></i>
     </a>
   
