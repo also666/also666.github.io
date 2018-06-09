@@ -276,19 +276,19 @@
 
 
   
-    <article id="post-third" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-form" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/third/">....</a>
+      <a class="article-title" href="/2018/04/10/form/">form表单的几大属性</a>
     </h1>
   
 
         
-        <a href="/2018/04/10/third/" class="archive-article-date">
+        <a href="/2018/04/10/form/" class="archive-article-date">
   	<time datetime="2018-04-10T12:04:25.149Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
 </a>
         
@@ -296,6 +296,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <h3 id="form的属性"><a href="#form的属性" class="headerlink" title="form的属性"></a>form的属性</h3><blockquote>
+<p>method属性：规定用于发送 form-data 的 HTTP 方法。实际上就是请求的方式。<br>  name属性：表单的名称。<br>  action属性：指定表单请求的路径<br>  target属性：指定action的Url在哪里打开</p>
+</blockquote>
+<h4 id="method属性"><a href="#method属性" class="headerlink" title="method属性"></a>method属性</h4><blockquote>
+<p>form表单是的HTML中常用的标签。主要用来提交参数与后台数据进行交互。提交表单的方式有两种（主要通过method属性控制）：<br>  ①GET方式：最常见的提交方式，也就是将请求的参数直接拼接在请求路径的后面。这样的方式会把参数暴露在地址栏，不安全，而且有长度的限制。<br>  ②POST方式：也比较常见。这种请求方式将参数保存在请求体中，地址栏不会出现请求的参数。相对安全。</p>
+</blockquote>
+<h4 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h4><blockquote>
+<p>定义表单的名称，一般不使用。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2018/04/10/form/#more">more >></a>
         
       
 
@@ -308,7 +319,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/10/third/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/04/10/form/">展开全文 >></a>
         </p>
       
 
@@ -659,19 +670,19 @@
 
 
   
-    <article id="post-four" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-http_request" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/05/four/">four</a>
+      <a class="article-title" href="/2018/01/05/http_request/">http的8种请求方式</a>
     </h1>
   
 
         
-        <a href="/2018/01/05/four/" class="archive-article-date">
+        <a href="/2018/01/05/http_request/" class="archive-article-date">
   	<time datetime="2018-01-05T13:54:55.609Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
 </a>
         
@@ -679,7 +690,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="http请求中的8种请求方法"><a href="#http请求中的8种请求方法" class="headerlink" title="http请求中的8种请求方法"></a>http请求中的8种请求方法</h3><p>HTTP/1.1协议中共定义了八种方法（有时也叫“动作”）来表明Request-URI指定的资源的不同操作方式。<br>1、OPTIONS 返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送’*’的请求来测试服务器的功能性。<br>2、HEAD 向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以在不必传输整个响应内容的情况下，就可以获取包含在响应消息头中的元信息。<br>3、GET 向特定的资源发出请求。注意：GET方法不应当被用于产生“副作用”的操作中，例如在web app.中。其中一个原因是GET可能会被网络蜘蛛等随意访问。<br>4、POST 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。<br>5、PUT 向指定资源位置上传其最新内容。<br>6、DELETE 请求服务器删除Request-URI所标识的资源。<br>7、TRACE 返回显服务器收到的请求，主要用于测试或诊断。<br>8、CONNECT HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</p>
+<p>我们可以跟数据库的CRUD增删改查操作对应起来：<br>　　CREATE ：PUT<br>　　READ：GET<br>　　UPDATE：POST<br>　　DELETE：DELETE</p>
+
       
 
       
@@ -691,7 +704,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/05/four/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/05/http_request/">展开全文 >></a>
         </p>
       
 
