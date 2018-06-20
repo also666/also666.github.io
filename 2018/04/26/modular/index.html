@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/5 | 胡傲松的博客</title>
+  <title>模块化 | 胡傲松的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="胡傲松的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/05/index.html">
+  <meta name="description" content="前端项目日益庞大，涉及到的业务方面越来越多，现在比较流行的是组件化开发，剩下就是模块化、工程化了。最新的ES6页支持了类class和模块module属性；对于模块化一直以来都不是特别清楚，趁机记录一下。 1.什么是JavaScript模块化什么是模块化？  模块化，简单来说就是：在解决一个复杂问题或者一系列杂糅问题时，按照一种查分的思维吧问题进行系统性分解，分而划之进行处理。代码模块化，就是将复杂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模块化">
+<meta property="og:url" content="http://yoursite.com/2018/04/26/modular/index.html">
 <meta property="og:site_name" content="胡傲松的博客">
+<meta property="og:description" content="前端项目日益庞大，涉及到的业务方面越来越多，现在比较流行的是组件化开发，剩下就是模块化、工程化了。最新的ES6页支持了类class和模块module属性；对于模块化一直以来都不是特别清楚，趁机记录一下。 1.什么是JavaScript模块化什么是模块化？  模块化，简单来说就是：在解决一个复杂问题或者一系列杂糅问题时，按照一种查分的思维吧问题进行系统性分解，分而划之进行处理。代码模块化，就是将复杂">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-11T02:29:36.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="胡傲松的博客">
+<meta name="twitter:title" content="模块化">
+<meta name="twitter:description" content="前端项目日益庞大，涉及到的业务方面越来越多，现在比较流行的是组件化开发，剩下就是模块化、工程化了。最新的ES6页支持了类class和模块module属性；对于模块化一直以来都不是特别清楚，趁机记录一下。 1.什么是JavaScript模块化什么是模块化？  模块化，简单来说就是：在解决一个复杂问题或者一系列杂糅问题时，按照一种查分的思维吧问题进行系统性分解，分而划之进行处理。代码模块化，就是将复杂">
   
     <link rel="alternative" href="/atom.xml" title="胡傲松的博客" type="application/atom+xml">
   
@@ -150,49 +154,191 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-modular" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/15/ten/" class="archive-article-date">
-  	<time datetime="2018-05-15T13:58:37.076Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/15/ten/">ten</a>
+    <h1 class="article-title" itemprop="name">
+      模块化
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2018/04/26/modular/" class="archive-article-date">
+  	<time datetime="2018-04-26T13:58:07.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前端项目日益庞大，涉及到的业务方面越来越多，现在比较流行的是组件化开发，剩下就是模块化、工程化了。最新的ES6页支持了类class和模块module属性；对于模块化一直以来都不是特别清楚，趁机记录一下。</p>
+<h3 id="1-什么是JavaScript模块化"><a href="#1-什么是JavaScript模块化" class="headerlink" title="1.什么是JavaScript模块化"></a>1.什么是JavaScript模块化</h3><p>什么是模块化？</p>
+<blockquote>
+<p>模块化，简单来说就是：在解决一个复杂问题或者一系列杂糅问题时，按照一种查分的思维吧问题进行系统性分解，分而划之进行处理。代码模块化，就是将复杂系统代码分解为结构更加合理、可维护性更高、便于管理的子模块的方式。对于软件行业来说，高内聚、低耦合的软件代码结构，使得不管系统的代码结构大小、业务的复杂性差异多大，系统都具有方便的管理性、开发敏捷性、高度可维护性。</p>
+</blockquote>
+<p>如何做到模块化设计</p>
+<blockquote>
+<p>模块化的设计的基本标准是分解、依赖、聚合，一个模块化系统必然具备以下几个特点：<br>  ①定义封装的模块；②定义新模块对其他模块的依赖；③对其他模块引入的支持；</p>
+</blockquote>
+<h3 id="2-实际场景中的模块化实现"><a href="#2-实际场景中的模块化实现" class="headerlink" title="2.实际场景中的模块化实现"></a>2.实际场景中的模块化实现</h3><p>弄清了模块化的原理，那么实际开发中我们如何运用这一设计模式，总要有一个或几个规范标准形式，这样才能统一大家的代码。JavaScript中出现了一些非传统开发方式的模块化规范：CommonJS、AMD、CMD.<br>看到眼花缭乱的AMD、CMD、UMD、sealJS、RequireJS、CommonJS经常让前端同学不知所措，开发过程中也是bug频频，这些都是什么意思，又有什么区别那，下面来进行一一说明。</p>
+<h4 id="2-1-CommonJS————同步加载、服务器端的模块化规范，采用案列：Node-js"><a href="#2-1-CommonJS————同步加载、服务器端的模块化规范，采用案列：Node-js" class="headerlink" title="2.1. CommonJS————同步加载、服务器端的模块化规范，采用案列：Node.js"></a>2.1. CommonJS————同步加载、服务器端的模块化规范，采用案列：Node.js</h4><p>实现原理：</p>
+<blockquote>
+<p>一个单独的文件就是一个模块；<br>  加载模块采用同步方式，加载完成后才能执行后面的操作<br>  加载模块使用require方法，该方法读取一个文件并执行，最后返回内部的exports对象；</p>
+</blockquote>
+<p>特点：</p>
+<blockquote>
+<p>由于是同步加载。所以加载、执行完依赖文件后，才可执行后续的操作，即会产生同步阻塞；<br>  比较适合运用于服务器的编程，加载模块文件通常都存在本地磁盘，加载过程无延迟，无需异步加载；<br>  由于同步加载执行，存在同步阻塞问题，对于从远程服务器加载模块的浏览器环境不友好</p>
+</blockquote>
+<a id="more"></a>
+<p>栗子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//lib.js</span></span><br><span class="line"><span class="keyword">var</span> privateVar=<span class="number">123</span>;                     <span class="comment">//局部变量</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funs</span>(<span class="params"></span>)</span>&#123;                        <span class="comment">//公有方法</span></span><br><span class="line">  <span class="keyword">this</span>.foo=fucntion()&#123;<span class="comment">//do something&#125;;</span></span><br><span class="line">  <span class="keyword">this</span>.bar=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//do other things &#125;;</span></span><br><span class="line">&#125;</span><br><span class="line">exports.funs=<span class="keyword">new</span> funs();              <span class="comment">// exports输出对象上的方法是公有方法</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//require方法默认读取js文件，通常省略.js后缀</span></span><br><span class="line"><span class="keyword">var</span> funs=<span class="built_in">require</span>(<span class="string">''</span>./lib<span class="string">').funs;</span></span><br><span class="line"><span class="string">funs.foo();</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-AMD————异步加载，采用案例：require-js"><a href="#2-2-AMD————异步加载，采用案例：require-js" class="headerlink" title="2.2 AMD————异步加载，采用案例：require.js"></a>2.2 AMD————异步加载，采用案例：require.js</h4><p><em>实现原理： ‘Ansychronous Module Definition’–异步模块定义<br>通过一个函数封装所有所需要、所依赖的模块/方法/对象/属性；返回一个新函数(模块)；<br>推崇依赖前置，依赖的模块提前执行；(require2.0开始支持延迟执行)<br>采用依赖注入方式加载模块；<br>注入依赖模块后，执行异步回调函数；
+</em>特点：<br>异步加载，不会产生异步阻塞，适合浏览器网络环境；<br>同时允许异步加载、按需加载模块<br>*栗子：<br>定义模块：define(id?,dependencies?,factory)<br>①id:模块标识，可选参数，字符串类型；②dependencies:当前模块的依赖模块标识，可选参数，数组类型；③factory:一个需要进行实例化的函数或者一个对象；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义无需依赖的模块</span></span><br><span class="line">define(&#123;</span><br><span class="line">  name:<span class="string">'jack'</span>;</span><br><span class="line">  say:<span class="function"><span class="keyword">function</span>(<span class="params">sex</span>)</span>&#123; <span class="keyword">return</span> <span class="string">`I am a <span class="subst">$&#123;sex&#125;</span>`</span> &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 2.定义有依赖的模块</span></span><br><span class="line">define([<span class="string">'depModule'</span>],fucntion(dep)&#123;</span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">    varb:fucntion()&#123;</span><br><span class="line">      <span class="keyword">return</span> dep.verb()+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 3.定义具名模块</span></span><br><span class="line">define(<span class="string">'allDep'</span>,[<span class="string">'depModuleA'</span>,<span class="string">'depModuleB'</span>],fucntion(depA,depB)&#123;</span><br><span class="line">  <span class="keyword">export</span>.varb=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> depA.fn();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>*加载模块：require([module],callback)<br>①[module]:需要加载的模块，数组类型；②callback:回调函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'math'</span>],fucntion()&#123;</span><br><span class="line">math.add(<span class="built_in">arguments</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-3-CMD————异步加载、异步执行依赖，案例：SealJS"><a href="#2-3-CMD————异步加载、异步执行依赖，案例：SealJS" class="headerlink" title="2.3 CMD————异步加载、异步执行依赖，案例：SealJS"></a>2.3 CMD————异步加载、异步执行依赖，案例：SealJS</h4><blockquote>
+<p>CMD 与 AMD 类似；都是采用异步加载，不同点主要有一下几点:</p>
+<ul>
+<li>对依赖模块的执行时机：CMD延迟执行，AMD提前执行(RequireJS2.0后支持延迟执行)</li>
+<li>依赖位置：CMD推崇依赖就近，按需加载；AMD推崇依赖前置；</li>
+<li>API:CMD推崇职责单一，AMD里面require分局部和全局方式；</li>
+</ul>
+</blockquote>
+<h4 id="2-4-UMD———异步加载，异步执行，兼容服务器、浏览器端，是AMD和CommonJS的糅合"><a href="#2-4-UMD———异步加载，异步执行，兼容服务器、浏览器端，是AMD和CommonJS的糅合" class="headerlink" title="2.4 UMD———异步加载，异步执行，兼容服务器、浏览器端，是AMD和CommonJS的糅合"></a>2.4 UMD———异步加载，异步执行，兼容服务器、浏览器端，是AMD和CommonJS的糅合</h4><p>AMD 以浏览器第一的原则，异步加载模块，加载的模块需经过包装；<br>CommonJS模块以服务器第一的原则，同步加载模块，加载的模块无需包装；<br>UMD :(Universal Module Definition)跨浏览器、服务器平台解决方案</p>
+<p>*原理：<br>首先判断是否支持Node.js模块(exports是否存在),存在则使用同步加载方案；<br>再判断是否支持AMD(define是否存在)，存在则是用异步加载方案</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( <span class="keyword">typeof</span> exports===<span class="string">'object'</span>)&#123;</span><br><span class="line">    <span class="built_in">module</span>.exports=factory();</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> define===<span class="string">'function'</span> &amp;&amp; define.amd)&#123;</span><br><span class="line">      define(factory);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    windoe.eventUtil=factory();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(<span class="keyword">this</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">// module ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/26/modular/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/10/form/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">form表单的几大属性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -215,8 +361,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

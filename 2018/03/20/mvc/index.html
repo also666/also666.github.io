@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>six | 胡傲松的博客</title>
+  <title>MVC与MVVM的区别 | 胡傲松的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="six">
-<meta property="og:url" content="http://yoursite.com/2018/01/29/six/index.html">
+  <meta name="description" content="MVC：Model+View+Controller主要目的:分离视图（View）和模型（Model）M-Model 模型：数据保存V-View 视图： 用户界面C-Controller 控制器： 业务逻辑 MVC ，用户操作&amp;gt; View (负责接受用户的输入操作)&amp;gt;Controller（业务逻辑处理）&amp;gt;Model（数据持久化）&amp;gt;View（将结果通过View反馈给用户）各部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVC与MVVM的区别">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/mvc/index.html">
 <meta property="og:site_name" content="胡傲松的博客">
+<meta property="og:description" content="MVC：Model+View+Controller主要目的:分离视图（View）和模型（Model）M-Model 模型：数据保存V-View 视图： 用户界面C-Controller 控制器： 业务逻辑 MVC ，用户操作&amp;gt; View (负责接受用户的输入操作)&amp;gt;Controller（业务逻辑处理）&amp;gt;Model（数据持久化）&amp;gt;View（将结果通过View反馈给用户）各部分">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-01-29T13:55:50.208Z">
+<meta property="og:updated_time" content="2018-06-20T09:04:32.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="six">
+<meta name="twitter:title" content="MVC与MVVM的区别">
+<meta name="twitter:description" content="MVC：Model+View+Controller主要目的:分离视图（View）和模型（Model）M-Model 模型：数据保存V-View 视图： 用户界面C-Controller 控制器： 业务逻辑 MVC ，用户操作&amp;gt; View (负责接受用户的输入操作)&amp;gt;Controller（业务逻辑处理）&amp;gt;Model（数据持久化）&amp;gt;View（将结果通过View反馈给用户）各部分">
   
     <link rel="alternative" href="/atom.xml" title="胡傲松的博客" type="application/atom+xml">
   
@@ -151,27 +154,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-six" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mvc" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      six
+      MVC与MVVM的区别
     </h1>
   
 
         
-        <a href="/2018/01/29/six/" class="archive-article-date">
-  	<time datetime="2018-01-29T13:55:46.235Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
+        <a href="/2018/03/20/mvc/" class="archive-article-date">
+  	<time datetime="2018-03-20T13:56:28.063Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="MVC：Model-View-Controller"><a href="#MVC：Model-View-Controller" class="headerlink" title="MVC：Model+View+Controller"></a>MVC：Model+View+Controller</h3><p>主要目的:分离视图（View）和模型（Model）<br>M-Model 模型：数据保存<br>V-View 视图： 用户界面<br>C-Controller 控制器： 业务逻辑</p>
+<p>MVC ，用户操作&gt; View (负责接受用户的输入操作)&gt;Controller（业务逻辑处理）&gt;Model（数据持久化）&gt;View（将结果通过View反馈给用户）<br>各部分的通信方式是单向传递。<br>view向controller传递指令，controller完成业务逻辑后，要求Model改变状态，Model将新的数据发送到view，用户得到反馈。<br>MVC接受用户指令时可以通过两种方式：一种是通过view接收指令，传递给controller;一种是直接通过controller接收指令。</p>
+<h3 id="MVVM：-Model-View-ViewModel"><a href="#MVVM：-Model-View-ViewModel" class="headerlink" title="MVVM： Model+View+ViewModel"></a>MVVM： Model+View+ViewModel</h3><p>M-Model：代表你的基本业务逻辑<br>V-View：显示内容<br>VM-ViewModel：将前面两者联系在一起的对象<br><a id="more"></a></p>
+<p>MVVM的优点：</p>
+<ol>
+<li>低耦合。视图（View）可以独立于Model变化和修改，一个ViewModel可以绑定到不同的”View”上，当View变化的时候Model可以不变，当Model变化的时候View也可以不变。</li>
+<li>可重用性。你可以把一些视图逻辑放在一个ViewModel里面，让很多view重用这段视图逻辑。</li>
+<li>独立开发。开发人员可以专注于业务逻辑和数据的开发（ViewModel），设计人员可以专注于页面设计。</li>
+<li>可测试。界面素来是比较难于测试的，而现在测试可以针对ViewModel来写。</li>
+</ol>
+
       
 
       
@@ -250,7 +263,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/29/six/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/20/mvc/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -264,18 +277,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/02/16/sever/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/04/10/form/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          sever
+          form表单的几大属性
         
       </div>
     </a>
   
   
-    <a href="/2018/01/14/five/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">five</div>
+    <a href="/2018/02/16/git/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git常用命令速查表</div>
       <i class="icon-circle-right"></i>
     </a>
   
