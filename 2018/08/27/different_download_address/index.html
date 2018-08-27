@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 胡傲松的博客</title>
+  <title>扫描二维码，判断是Android还是iOS，并跳转到不同的下载地址 | 胡傲松的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="胡傲松的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="问题概要一般情况下，我们开发App，有Android和iOS版本，为了方便用户，我们只能有一个二维码供用户扫描下载安装，那么，怎么让iOS用户下载iOS版本，Android用户下载Android版本呢？ 解决思路首先，我们知道二维码存放的是一个链接，这个链接我们不要放Android也不要存放iOS的下载地址，这个链接应该存放的是我们服务器的一个html页面的地址，在这个html页面里，我们通过ja">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扫描二维码，判断是Android还是iOS，并跳转到不同的下载地址">
+<meta property="og:url" content="http://yoursite.com/2018/08/27/different_download_address/index.html">
 <meta property="og:site_name" content="胡傲松的博客">
+<meta property="og:description" content="问题概要一般情况下，我们开发App，有Android和iOS版本，为了方便用户，我们只能有一个二维码供用户扫描下载安装，那么，怎么让iOS用户下载iOS版本，Android用户下载Android版本呢？ 解决思路首先，我们知道二维码存放的是一个链接，这个链接我们不要放Android也不要存放iOS的下载地址，这个链接应该存放的是我们服务器的一个html页面的地址，在这个html页面里，我们通过ja">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-27T06:11:52.727Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="胡傲松的博客">
+<meta name="twitter:title" content="扫描二维码，判断是Android还是iOS，并跳转到不同的下载地址">
+<meta name="twitter:description" content="问题概要一般情况下，我们开发App，有Android和iOS版本，为了方便用户，我们只能有一个二维码供用户扫描下载安装，那么，怎么让iOS用户下载iOS版本，Android用户下载Android版本呢？ 解决思路首先，我们知道二维码存放的是一个链接，这个链接我们不要放Android也不要存放iOS的下载地址，这个链接应该存放的是我们服务器的一个html页面的地址，在这个html页面里，我们通过ja">
   
     <link rel="alternative" href="/atom.xml" title="胡傲松的博客" type="application/atom+xml">
   
@@ -150,184 +154,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-different_download_address" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      扫描二维码，判断是Android还是iOS，并跳转到不同的下载地址
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/27/different_download_address/" class="archive-article-date">
+
+        
+        <a href="/2018/08/27/different_download_address/" class="archive-article-date">
   	<time datetime="2018-08-27T03:32:35.331Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/27/different_download_address/">扫描二维码，判断是Android还是iOS，并跳转到不同的下载地址</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题概要"><a href="#问题概要" class="headerlink" title="问题概要"></a>问题概要</h3><p>一般情况下，我们开发App，有Android和iOS版本，为了方便用户，我们只能有一个二维码供用户扫描下载安装，<br>那么，怎么让iOS用户下载iOS版本，Android用户下载Android版本呢？</p>
+<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><p>首先，我们知道二维码存放的是一个链接，这个链接我们不要放Android也不要存放iOS的下载地址，<br>这个链接应该存放的是我们服务器的一个html页面的地址，在这个html页面里，我们通过javaScript来进行判断是iOS还是Android系统，判断不同的系统，分别指向不同的安装地址去下载安装。</p>
+<h3 id="页面代码"><a href="#页面代码" class="headerlink" title="页面代码"></a>页面代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span><br><span class="line">        &lt;title&gt;二维码下载&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">        &lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            /* 智能机浏览器版本信息: */</span></span><br><span class="line"><span class="string">            var browser = &#123;</span></span><br><span class="line"><span class="string">                versions: function() &#123;</span></span><br><span class="line"><span class="string">                    var u = navigator.userAgent, app = navigator.appVersion;</span></span><br><span class="line"><span class="string">                    return &#123;</span></span><br><span class="line"><span class="string">                        //移动终端浏览器版本信息</span></span><br><span class="line"><span class="string">                        trident: u.indexOf('Trident') &gt; -1, //IE内核</span></span><br><span class="line"><span class="string">                        presto: u.indexOf('Presto') &gt; -1, //opera内核</span></span><br><span class="line"><span class="string">                        webKit: u.indexOf('AppleWebKit') &gt; -1, //苹果、谷歌内核</span></span><br><span class="line"><span class="string">                        gecko: u.indexOf('Gecko') &gt; -1 &amp;&amp; u.indexOf('KHTML') == -1, //火狐内核</span></span><br><span class="line"><span class="string">                        mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端</span></span><br><span class="line"><span class="string">                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端</span></span><br><span class="line"><span class="string">                        android: u.indexOf('Android') &gt; -1 || u.indexOf('Linux') &gt; -1, //android终端或者uc浏览器</span></span><br><span class="line"><span class="string">                        iPhone: u.indexOf('iPhone') &gt; -1 || u.indexOf('Mac') &gt; -1, //是否为iPhone或者QQHD浏览器</span></span><br><span class="line"><span class="string">                        iPad: u.indexOf('iPad') &gt; -1, //是否iPad</span></span><br><span class="line"><span class="string">                        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部</span></span><br><span class="line"><span class="string">                    &#125;;</span></span><br><span class="line"><span class="string">                &#125;(),</span></span><br><span class="line"><span class="string">                language: (navigator.browserLanguage || navigator.language).toLowerCase()</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) &#123;</span></span><br><span class="line"><span class="string">                // 此处写iOS的下载地址</span></span><br><span class="line"><span class="string">                window.location="</span>https:<span class="comment">//itunes.apple.com/cn/app/xxx";</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (browser.versions.android) &#123;</span><br><span class="line">                <span class="comment">// 此处写Andoird 的下载地址</span></span><br><span class="line">                <span class="built_in">window</span>.location=<span class="string">"http://zhj8.aliapp.com/xxx.apk"</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//            document.writeln("语言版本: " + browser.language);</span></span><br><span class="line"><span class="comment">//            document.writeln(" 是否为移动终端: " + browser.versions.mobile);</span></span><br><span class="line"><span class="comment">//            document.writeln(" ios终端: " + browser.versions.ios);</span></span><br><span class="line"><span class="comment">//            document.writeln(" android终端: " + browser.versions.android);</span></span><br><span class="line"><span class="comment">//            document.writeln(" 是否为iPhone: " + browser.versions.iPhone);</span></span><br><span class="line"><span class="comment">//            document.writeln(" 是否iPad: " + browser.versions.iPad);</span></span><br><span class="line"><span class="comment">//            document.writeln(navigator.userAgent);</span></span><br><span class="line"></span><br><span class="line">        &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
+<p>我们只需要把上面的html页面的地址放入二维码中，通过扫描二维码进入此页面，此页面会有相应的逻辑判断进行跳转下载页面。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/27/different_download_address/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/26/modular/" class="archive-article-date">
-  	<time datetime="2018-04-26T13:58:07.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/26/modular/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">模块化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/26/modular/">模块化</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/10/form/" class="archive-article-date">
-  	<time datetime="2018-04-10T12:04:25.149Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/10/form/">form表单的几大属性</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/20/mvc/" class="archive-article-date">
-  	<time datetime="2018-03-20T13:56:28.063Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/20/mvc/">MVC与MVVM的区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/16/git/" class="archive-article-date">
-  	<time datetime="2018-02-16T13:56:06.481Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/16/git/">Git常用命令速查表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/05/http_request/" class="archive-article-date">
-  	<time datetime="2018-01-05T13:54:55.609Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/05/http_request/">http的8种请求方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -350,8 +329,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
